@@ -1,18 +1,20 @@
 name: "simple ci/cd demo"
 
 on:
-	push:
+  push:
     branches:
       - feature-test
+
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        run: echo "hello world" 
+      - name: Print hello
+        run: echo "hello world"
+
   job2:
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        run: echo "hello world33"    
+      - name: Print hello again
+        run: echo "hello world33"  
