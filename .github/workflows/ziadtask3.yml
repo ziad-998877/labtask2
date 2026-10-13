@@ -3,7 +3,7 @@ name: "simple ci/cd demo"
 on:
 	push:
     branches:
-      - master
+      - feature-test
 jobs:
   job1:
     runs-on: ubuntu-latest
