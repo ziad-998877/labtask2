@@ -1,20 +1,24 @@
-name: "simple ci/cd demo"
+name: Calculator CI
 
 on:
   push:
-    branches:
-      - feature-test
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
 
 jobs:
-  job1:
+  test:
     runs-on: ubuntu-latest
-    steps:
-      - name: Print hello
-        run: echo "hello world"
 
-  job2:
-    needs: job1
-    runs-on: ubuntu-latest
     steps:
-      - name: Print hello again
-        run: echo "hello world33"  
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
