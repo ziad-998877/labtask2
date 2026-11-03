@@ -1,11 +1,9 @@
 import unittest
-
 from calculator import calculate
 
 
 class TestCalculator(unittest.TestCase):
 
-    
     def test_addition_positive_numbers(self):
         self.assertEqual(calculate(5, 3, "+"), 8)
 
@@ -20,3 +18,7 @@ class TestCalculator(unittest.TestCase):
 
     def test_addition_decimal_numbers(self):
         self.assertAlmostEqual(calculate(1.5, 2.5, "+"), 4.0)
+
+
+if __name__ == "__main__":
+    unittest.main()
